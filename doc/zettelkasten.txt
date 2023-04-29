@@ -125,7 +125,7 @@ ZkBrowse                                                              *:ZkBrowse
 LUA                                                            *zettelkasten-lua*
 ================================================================================
 
-setup({opts})                                                *zettelkasten-setup*
+setup({opts})                                                *zettelkasten.setup*
 
     Initialize the plugin.
 
@@ -185,7 +185,7 @@ setup({opts})                                                *zettelkasten-setup
             - {title_pattern} (optional, string): The regex pattern used to
               determine the title of a note.
               Default value is: `# %d+-%d+-%d+-%d+-%d+-%d+ .+`
-keyword_expr({cword}, {opts})                         *zettelkasten-keyword-expr*
+keyword_expr({cword}, {opts})                         *zettelkasten.keyword_expr*
 
     Returns a table that contains the context for the note with the given ID
     {cword}.
@@ -204,7 +204,7 @@ keyword_expr({cword}, {opts})                         *zettelkasten-keyword-expr
     Returns: ~
         {table}
 
-tagfunc({pattern}, {flags}, {info})                        *zettelkasten-tagfunc*
+tagfunc({pattern}, {flags}, {info})                        *zettelkasten.tagfunc*
 
     Implements a |tagfunc|. This function is automatically set to the
     |tagfunc| option by the plugin.
@@ -212,7 +212,7 @@ tagfunc({pattern}, {flags}, {info})                        *zettelkasten-tagfunc
     Returns: ~
         {table}
 
-set_note_id({bufnr} [, {parent_id}])                   *zettelkasten-set-note-id*
+set_note_id({bufnr} [, {parent_id}])                   *zettelkasten.set_note_id*
 
     Prepends a note ID to the first line of the current buffer. It expects to
     find a markdown header in the first line.
@@ -222,7 +222,7 @@ set_note_id({bufnr} [, {parent_id}])                   *zettelkasten-set-note-id
         {parent_id} (number, optional): The id of the parent of this note.
         This may be used by the `config.id_format` to generate the id.
 
-completefunc({base})                                  *zettelkasten-completefunc*
+completefunc({base})                                  *zettelkasten.completefunc*
 
     Implements a |complete-function|. Given a {base} note ID or title, returns
     a list of notes matching notes.
@@ -230,13 +230,13 @@ completefunc({base})                                  *zettelkasten-completefunc
     Parameters: ~
         {base} (string): Note ID or title.
 
-show_back_references({cword}, {use_loclist})  *zettelkasten-show_back_references*
+show_back_references({cword}, {use_loclist})  *zettelkasten.show_back_references*
 
     Presents the list of notes that reference the note with {cword} ID.
     If {use_loclist} set to true, location list will be used instead of
     quickfix list.
 
-get_back_references({note_id})                 *zettelkasten-get_back_references*
+get_back_references({note_id})                 *zettelkasten.get_back_references*
 
     Returns a list containg an item each describing a note that references
     {note_id}.
@@ -248,7 +248,7 @@ get_back_references({note_id})                 *zettelkasten-get_back_references
         - {title} (string): The title of the note with {id}
         - {file_name} (string): The file name of the note with {id}
 
-get_toc({note_id}, {format})                               *zettelkasten-get_toc*
+get_toc({note_id}, {format})                               *zettelkasten.get_toc*
 
     Returns a table that contains a list of notes that refer to {note_id}
     formatted according to {format}.
@@ -286,7 +286,7 @@ get_toc({note_id}, {format})                               *zettelkasten-get_toc
             range = true,
         })
 
-contains({path})                               *zettelkasten-is_in_notes_path*
+contains({path})                                          *zettelkasten.contains*
 
     Determines whether the given {path} is within the directory structure
     rooted at {notes_path}. 
@@ -312,7 +312,7 @@ contains({path})                               *zettelkasten-is_in_notes_path*
         setlocal completefunc=v:lua.zettelkasten.completefunc
     endif
 
-browser.get_note(id)                                      *zettelkasten-get_note*
+browser.get_note(id)                              *zettelkasten.browser.get_note*
     
     Returns the note information for the specified note, or `nil` if it does
     not exist. Note info is a table with the following fields:
@@ -329,7 +329,7 @@ browser.get_note(id)                                      *zettelkasten-get_note
     note_info = require("zettelkasten").browser.get_note("1970-01-01-00-00-00")
 <
 
-browser.get_notes()                                      *zettelkasten-get_notes*
+browser.get_notes()                              *zettelkasten.browser.get_notes*
     
     Returns the information of all the notes in the {notes_path}. >
     notes = require("zettelkasten").browser.get_notes()
@@ -338,7 +338,7 @@ browser.get_notes()                                      *zettelkasten-get_notes
     end
 <
 
-browser.get_tags()                                        *zettelkasten-get_tags*
+browser.get_tags()                                *zettelkasten.browser.get_tags*
     
     Returns all the tags in all the notes. A tag has the following fields:
     linenr:     (number) The line number the tag is on.
