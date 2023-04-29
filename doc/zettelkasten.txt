@@ -96,7 +96,7 @@ ZkNew {parent_id}                                                        *:ZkNew
         id for the new note. By default this is not used because the default
         id generation is based on the current time. However this value is
         passed to the {id_format} function and can be used to inform the
-        generator function. An example of this is in Luhdmann's naming scheme
+        generator function. An example of this is in Luhmann's naming scheme
         where a child note of '12c2' would be '12a2a'.
 
 
