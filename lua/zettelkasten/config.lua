@@ -21,6 +21,33 @@ M.get = function()
     return s_config
 end
 
+M.notes_path = function()
+    return s_config.notes_path
+end
+
+M.preview_command = function()
+    return s_config.preview_command
+end
+
+M.browseformat = function()
+    return s_config.browseformat
+end
+M.id_inference_location = function()
+    return s_config.id_inference_location
+end
+M.id_pattern = function()
+    return s_config.id_pattern
+end
+M.id_format = function()
+    return s_config.id_format
+end
+M.filename_pattern = function()
+    return s_config.filename_pattern
+end
+M.title_pattern = function()
+    return s_config.title_pattern
+end
+
 M._set = function(new_config)
     for k, _ in pairs(new_config) do
         if s_config[k] == nil then

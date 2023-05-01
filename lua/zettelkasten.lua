@@ -57,7 +57,7 @@ local function get_all_tags(lookup_tag)
 end
 
 local function generate_note_id(parent_id)
-    local id_format = config.get().id_format
+    local id_format = config.id_format()
     local format_type = type(id_format)
     if format_type == "string" then
         return fn.strftime(id_format)
@@ -165,7 +165,7 @@ function M.keyword_expr(word, opts)
 
     local lines = {}
     if opts.preview_note and not opts.return_lines then
-        vim.cmd(config.get().preview_command .. " " .. note.file_name)
+        vim.cmd(config.preview_command() .. " " .. note.file_name)
     elseif opts.preview_note and opts.return_lines then
         vim.list_extend(lines, read_note(note.file_name))
     else
@@ -255,7 +255,7 @@ function M.get_toc(note_id, format)
 end
 
 function M.get_note_browser_content()
-    if config.get().notes_path == "" then
+    if config.notes_path() == "" then
         log.notify("'notes_path' option is required for note browsing.", log_levels.WARN, {})
         return {}
     end
@@ -273,7 +273,7 @@ function M.get_note_browser_content()
         })
     end
 
-    return formatter.format(lines, config.get().browseformat)
+    return formatter.format(lines, config.browseformat())
 end
 
 function M.add_hover_command()
@@ -310,7 +310,7 @@ function M._internal_execute_hover_cmd(args)
 end
 
 function M.contains(filename)
-    local notes_path = config.get().notes_path
+    local notes_path = config.notes_path()
     if notes_path == "" then
         log.notify(
             "'notes_path' option is required for checking note location.",

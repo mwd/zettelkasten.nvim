@@ -4,9 +4,9 @@ local fn = vim.fn
 if fn.exists(":ZkNew") == 0 then
     api.nvim_create_user_command("ZkNew", function(opts)
         vim.cmd([[new | setlocal filetype=markdown]])
-        local config = require("zettelkasten.config").get()
-        if config.notes_path ~= "" then
-            vim.cmd("lcd " .. config.notes_path)
+        local config = require("zettelkasten.config")
+        if config.notes_path() ~= "" then
+            vim.cmd("lcd " .. config.notes_path())
         end
 
         vim.cmd("normal ggI# New Note")

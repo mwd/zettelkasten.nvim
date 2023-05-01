@@ -33,7 +33,7 @@ if vim.fn.mapcheck("[I", "n") == "" then
     )
 end
 
-local config = require("zettelkasten.config").get()
+local config = require("zettelkasten.config")
 if config.notes_path ~= "" then
-    vim.cmd("lcd " .. config.notes_path)
+    vim.cmd("lcd " .. config.notes_path())
 end

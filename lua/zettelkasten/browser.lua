@@ -180,17 +180,16 @@ function M.get_note(id)
 end
 
 function M.get_notes()
-    local cfg = config.get()
-    local folder = cfg.notes_path
-    local files = get_files(folder, cfg.filename_pattern)
+    local folder = config.notes_path()
+    local files = get_files(folder, config.filename_pattern())
     local all_notes = {}
     for _, file in ipairs(files) do
         table.insert(
             all_notes,
             get_note_information(file, {
-                id_pattern = cfg.id_pattern,
-                title_pattern = cfg.title_pattern,
-                id_inference_location = cfg.id_inference_location,
+                id_pattern = config.id_pattern(),
+                title_pattern = config.title_pattern(),
+                id_inference_location = config.id_inference_location(),
             })
         )
     end
