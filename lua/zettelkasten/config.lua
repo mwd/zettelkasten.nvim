@@ -13,8 +13,6 @@ local s_config = {
     id_inference_location = M.TITLE,
     id_pattern = "%d+-%d+-%d+-%d+-%d+-%d+",
     id_format = "%Y-%m-%d-%H-%M-%S",
-    filename_pattern = "%d+-%d+-%d+-%d+-%d+-%d+.md",
-    title_pattern = "# %d+-%d+-%d+-%d+-%d+-%d+ .+",
 }
 
 M.get = function()
@@ -42,10 +40,10 @@ M.id_format = function()
     return s_config.id_format
 end
 M.filename_pattern = function()
-    return s_config.filename_pattern
+    return M.id_pattern() .. ".md"
 end
 M.title_pattern = function()
-    return s_config.title_pattern
+    return "# " .. M.id_pattern() .. " .+"
 end
 
 M._set = function(new_config)
